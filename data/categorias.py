@@ -1,0 +1,20 @@
+categorias = {
+  'Uber': ['UBER'],
+  'Vendas': ['HNA', 'MAHOGANY', 'NATURA', 'Nat*Natura', 'Hna*Oboticario'],
+  'Mercado Cond.': ['PAG*PbvendLocacao', 'PbvendLocacaoDe', 'PAG*PbvendLocacaoDe'],
+  'Farmácia': ['DROGARIA', 'REDEPHARMA', 'PAG*RaiaDrogasilSA', 'FARMACIAS PAGUE MENOS', 'FARMACIA'],
+  'Almoço Diego': ['RESTAURANTE JARDIM RET', 'DONA BETH', 'DONNA BETH', 'JARDIM RETRO', 'ZP*PEREIRA', 
+                    'REST DOCE SABOR', 'TARSILA GRIZI', 'PAPA MASSAS', 'EXTREMO ORIENTAL', 'RESTAURANTE MARE ALTA'],
+  'Supermercado': ['REDE COMPRAS', 'VERD FRUT', 'SUPERMERCADO BEM MAIS', 'ASSAI ATACADISTA', 
+                    'DICOPLAST', 'ARAUJO COMERCIO DE ALI', 'NOW MERCADO', 'FORTE FRUTOS', 'PADARIA BESSAMAR',
+                    'MERCADO AJUBA', '4017 SAM S BESSA '],
+  'Restaurante': ['MUNDIAL LANCHES', 'MP*CHEFDOESPETO', 'CASA   *DO BOLO', 'D NAPOLES MANAIRA',
+                  'ILHA DOURADA BAR E RES', 'EnpadinhasBarnabe', 'ALE PESSOA', 'PG *TON CORACAO MINE',
+                  'TIO ARMENIO', 'NAVARROS', 'O LEITAO', 'SONHO DOCE', 'BURGER KING', 'MUNDO DOS PASTEIS',
+                  'SUSHI JIRO', 'BESSA PAO OCEANIA', 'MIO DO SERTAO', 'ALICE TORTAS BESSA', 'IFD', 'MINI KALZONE',
+                  'KFC', 'COCO'],
+  'Educação': ['ISO COLEGIO E CURSOS', 'BMB*Salta Educ', 'S2 FARDAMENTOS ESCOLAR'],
+  'Compras': ['FERREIRA COSTA', 'BRASTEMP', 'CASASBAHIACOM', 'DL*SHEINCOM', 'Shopee', 'PG *TON HIPYLIKI', 'AREZZO', 
+              'HUB*NETSHOES', 'DIA A DIA BABY', 'AMORA RIO'],
+  'Assinaturas': ['APPLE', 'BRADESCO SEGUROS', 'SELFIT', 'NETFLIX', 'EBN *SONYPLAYSTATN']
+}
