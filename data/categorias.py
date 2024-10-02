@@ -1,6 +1,6 @@
 categorias = {
   'Uber': ['UBER'],
-  'Vendas Karina': ['HNA', 'MAHOGANY', 'NATURA', 'Nat*Natura', 'Hna*Oboticario'],
+  'Vendas': ['HNA', 'MAHOGANY', 'NATURA', 'Nat*Natura', 'Hna*Oboticario'],
   'Mercado Cond.': ['PAG*PbvendLocacao', 'PbvendLocacaoDe', 'PAG*PbvendLocacaoDe'],
   'Farmácia': ['DROGARIA', 'REDEPHARMA', 'PAG*RaiaDrogasilSA', 'FARMACIAS PAGUE MENOS', 'FARMACIA'],
   'Almoço Diego': ['RESTAURANTE JARDIM RET', 'DONA BETH', 'DONNA BETH', 'JARDIM RETRO', 'ZP*PEREIRA', 
