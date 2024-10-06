@@ -1,7 +1,7 @@
 import os, json, platform, subprocess, webbrowser
 from pathlib import Path
 import matplotlib.pyplot as plt
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, Entry
 from collections import defaultdict
 
 def load_json(file_path):
@@ -28,6 +28,12 @@ def save_json(file_path, data):
       messagebox.showerror("Erro", f"Erro ao salvar categorias: {e}")
   else:
     messagebox.showinfo("Atenção", "Salvamento cancelado pelo usuário")
+
+def select_file(file_type, type_name, entry: Entry):
+  file_path = filedialog.askopenfilename(filetypes=[(type_name, file_type)])
+  if file_path:
+    entry.delete(0, 'end')
+    entry.insert(0, file_path)
 
 # Monta URL completa para pasta e arquivo
 def get_file_path(folder_name, file_name):

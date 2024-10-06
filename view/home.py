@@ -1,14 +1,8 @@
 import tkinter as tk
-from tkinter import filedialog
 from src.process import run_process
+from src.functions import select_file
 from data.banks import banks
 from view.category_editor import open_category_editor
-
-def select_file(file_type, type_name, entry: tk.Entry):
-  file_path = filedialog.askopenfilename(filetypes=[(type_name, file_type)])
-  if file_path:
-    entry.delete(0, tk.END)
-    entry.insert(0, file_path)
 
 def start_app():
   # Criação da interface
