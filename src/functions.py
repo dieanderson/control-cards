@@ -1,12 +1,50 @@
+import os, json, platform, subprocess, webbrowser
 from pathlib import Path
 import matplotlib.pyplot as plt
+from tkinter import filedialog, messagebox
 from collections import defaultdict
+
+def load_json(file_path):
+  with open(file_path, 'r', encoding='utf-8') as file:
+    return json.load(file)
+
+def save_json(file_path, data):
+  create = False
+  if not file_path:
+    file_path = filedialog.asksaveasfilename(
+      defaultextension=".json",
+      filetypes=[("JSON files", "*.json")],
+      title="Salvar arquivo de categorias"
+    )
+    create = True
+  
+  if file_path:
+    try:
+      with open(file_path, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+      messagebox.showinfo("Sucesso", f"Categorias salvas em: {file_path}")
+      return file_path if create == True else None
+    except Exception as e:
+      messagebox.showerror("Erro", f"Erro ao salvar categorias: {e}")
+  else:
+    messagebox.showinfo("Atenção", "Salvamento cancelado pelo usuário")
 
 # Monta URL completa para pasta e arquivo
 def get_file_path(folder_name, file_name):
   base_dir = Path(__file__).resolve().parent.parent
   file_path = str(base_dir / folder_name / file_name)
   return file_path
+
+# Abre o PDF no visualizador padrão de acordo com o sistema operacional
+def open_file(path):
+  if platform.system() == "Darwin":  # macOS
+    subprocess.call(('open', path))
+  elif platform.system() == "Windows":  # Windows
+    os.startfile(path)
+  elif platform.system() == "Linux":  # Linux
+    subprocess.call(('xdg-open', path))
+  else:
+    webbrowser.open_new(path)
 
 # Categoriza os lançamentos
 def categorizar_lancamento(descricao, categorias):

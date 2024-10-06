@@ -101,3 +101,4 @@ def generate_categorized_pdf(lancamentos_agrupados, resumo, cod_banco):
   
   pdf.output(nome_arquivo)
   print(f'Relatório gerado: {nome_arquivo}')
+  return nome_arquivo
