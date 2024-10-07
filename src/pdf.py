@@ -1,27 +1,19 @@
 import locale
 from fpdf import FPDF
+from slugify import slugify
+from datetime import datetime
 from .functions import get_file_path, gerar_grafico_pizza
 
 # Gera PDF
-def generate_categorized_pdf(lancamentos_agrupados, resumo, cod_banco):
+def generate_categorized_pdf(lancamentos_agrupados, resumo, banco_nome):
+  now = datetime.now()
+  timestamp = now.strftime("%Y%m%d_%H%M%S")
   locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
-  banco_nome = ''
-  banco_img = ''
-  nome_arquivo= get_file_path('reports', 'relatorio.pdf')
-  match cod_banco:
-    case 237:
-      banco_nome = 'Bradesco'
-      banco_img = get_file_path('img', 'bradesco.png')
-      nome_arquivo = get_file_path('reports', 'relatorio_bradesco.pdf')
-    case 260:
-      banco_nome = 'Nubank'
-      banco_img = get_file_path('img', 'nubank.png')
-      nome_arquivo = get_file_path('reports', 'relatorio_nubank.pdf')
-    case 348:
-      banco_nome = 'XP'
-      banco_img = get_file_path('img', 'xp.png')
-      nome_arquivo = get_file_path('reports', 'relatorio_xp.pdf')
-
+  
+  banco_slug = slugify(banco_nome)
+  banco_img = get_file_path('img', f'{banco_slug}.png')
+  nome_arquivo = get_file_path('reports', f'relatorio_{banco_slug}_{timestamp}.pdf')
+  
   pdf = FPDF()
   pdf.set_auto_page_break(auto=True, margin=15)
   pdf.add_page()
