@@ -25,7 +25,7 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   Abra o terminal e clone o repositório do GitHub:
 
   ```bash
-  git clone git@github.com:dieanderson/control-cards.git
+  git clone https://github.com/dieanderson/control-cards.git
   ```
 
 2. **Navegue até o Diretório do Projeto**
