@@ -26,6 +26,7 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
 
   ```bash
   git clone git@github.com:dieanderson/control-cards.git
+  ```
 
 2. **Navegue até o Diretório do Projeto**
   
