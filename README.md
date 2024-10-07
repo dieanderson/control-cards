@@ -1,13 +1,14 @@
 # Control-Cards
 
-Control-Cards é uma aplicação em Python que gera relatórios categorizados de faturas de cartões de crédito. Com apenas adicionar o arquivo `.csv` da fatura do cartão e configurar as categorias desejadas, a ferramenta gera um relatório em PDF contendo gráficos e um resumo detalhado dos seus gastos.
+Control-Cards é uma aplicação em Python que gera relatórios categorizados de faturas de cartões de crédito. Bastando apenas adicionar o arquivo `.csv` da fatura do cartão e configurar o agrupamento dos lançamentos com as categorias desejadas, a ferramenta gera um relatório em PDF contendo gráficos e um resumo detalhado dos seus gastos.
 
 ## 📋 Funcionalidades
 
+- **Interface:** Interface amigável multiplataforma(Windows, Linux e MacOs).
 - **Importação Fácil:** Basta adicionar o arquivo `.csv` da sua fatura de cartão de crédito.
-- **Configuração de Categorias:** Personalize as categorias no arquivo JSON localizado na pasta `data`, vinculando a descrição dos lançamentos às categorias desejadas.
-- **Relatórios Detalhados:** Gera relatórios PDF categorizados com gráficos e resumos de gastos.
-- **Compatibilidade:** Atualmente, suporta faturas `.csv` dos bancos Bradesco, Nubank e XP.
+- **Configuração de Categorias:** Personalize as categorias no editor de categorias ou diretamente no arquivo JSON, vinculando a descrição dos lançamentos às categorias desejadas.
+- **Relatórios Detalhados:** Gere um relatório PDF categorizado com gráfico e resumos de gastos.
+- **Compatibilidade:** Atualmente, suporta faturas `.csv` dos bancos Bradesco, Nubank e XP(Fácil integração com outros bancos).
 
 ## 🚀 Começando
 
@@ -27,17 +28,25 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   git clone git@github.com:dieanderson/control-cards.git
 
 2. **Navegue até o Diretório do Projeto**
+  
   ```bash
   cd control-cards
 
 3. **Crie e Ative um Ambiente Virtual (Opcional, mas Recomendado)**
+  
   ```bash
   python3 -m venv venv
   source venv/bin/activate  # No Windows: venv\Scripts\activate
 
 4. **Instale as Dependências**
+  
   ```bash
   pip install -r requirements.txt
+
+5. **Executando o projeto**
+  
+  ```bash
+  python3 main.py
 
 ## 🛠 Uso
 
@@ -57,21 +66,25 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
 3. **Executar a Aplicação**
 
   Execute o script principal para gerar o relatório PDF:
+  
   ```bash
   python main.py
 
-## 📂 Adicionar Novos Bancos
+### 📂 Adicionar Novos Bancos
 
-  Atualmente, a aplicação suporta faturas do Bradesco, Nubank e XP. Para adicionar suporte a novos bancos:
+  Atualmente a aplicação suporta faturas do Bradesco, Nubank e XP. Para adicionar suporte a novos bancos é só seguir os passos:
 
-  1. **Criar um Módulo de Modelo**
-    Adicione um novo arquivo Python na pasta src/models/ com a lógica para processar o .csv do novo banco.
+  1. **Criar um Módulo de Modelo**:
+    Adicione um novo arquivo Python na pasta src/models/ com a lógica para processar o .csv do novo banco(verificar padrão já implementado nos arquivos existentes).
   
-  2. **Atualizar o `process.py`**
-    Implemente a lógica para identificar e processar os arquivos do novo banco conforme necessário.
+  2. **Atualizar o `banks.py`**:
+    Adicione o novo banco no arquivo `JSON` seguindo o padrão.
+  
+  3. **Atualizar o `process.py`**:
+    Importar o novo arquivo de modelo e adicionar uma nova checagem no `case` utilizando o código do banco.
 
 
-## 🗂 Estrutura do Projeto
+### 🗂 Estrutura do Projeto
 
   ```
   control-cards/
@@ -89,14 +102,16 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   │   ├── nubank.png
   │   └── xp.png
   ├── data/
-  │   ├── categorias.json
-  │   └── categorias_xp.json
-  ├── files/
-  │   └── nubank.csv
+  │   └── banks.py
+  ├── view/
+  │   ├── home.py
+  │   └── category_editor.py
   ├── reports/
-  │   └── relatorio_nubank.pdf 
+  │   └── <relatórios são gravados nessa pasta por default>
   ├── main.py
-  ├── requirements.txt      
+  ├── requirements.txt
+  ├── .gitignore 
+  ├── LICENSE       
   └── README.md
   ```
 
@@ -104,4 +119,4 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
 
 Diêgo Anderson - dieanderson@gmail.com
 
-Projeto Link: [https://github.com/dieanderson/control-cards](https://github.com/dieanderson/control-cards)
+[Link do Projeto](https://github.com/dieanderson/control-cards)
