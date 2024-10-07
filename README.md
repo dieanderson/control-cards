@@ -32,22 +32,26 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   
   ```bash
   cd control-cards
+  ```
 
 3. **Crie e Ative um Ambiente Virtual (Opcional, mas Recomendado)**
   
   ```bash
   python3 -m venv venv
   source venv/bin/activate  # No Windows: venv\Scripts\activate
+  ```
 
 4. **Instale as Dependências**
   
   ```bash
   pip install -r requirements.txt
+  ```
 
 5. **Executando o projeto**
   
   ```bash
   python3 main.py
+  ```
 
 ## 🛠 Uso
 
@@ -70,6 +74,7 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   
   ```bash
   python main.py
+  ```
 
 ### 📂 Adicionar Novos Bancos
 
