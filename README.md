@@ -55,26 +55,27 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
 
 ## 🛠 Uso
 
-1. **Adicionar o Arquivo `.csv` da Fatura**
+  1. **Selecione o Arquivo `.csv` da sua Fatura**
+
+  <img width="850" alt="Screenshot 2024-10-07 at 18 28 40" src="https://github.com/user-attachments/assets/5d0ec730-58f2-45b9-9f40-a368bf56e1bb">
   
-  Coloque o arquivo `.csv` da sua fatura na pasta raiz do projeto ou em um diretório de sua preferência.
+  2. **Selecione o Arquivo de Categorias**
 
-2. **Configurar as Categorias**
-
-  Edite os arquivos de categorias localizados na pasta `src/data`:
-
-  - `categorias.json`: Para faturas padrão.
-  - `categorias_xp.json`: Para faturas da XP.
-
-  Vincule a descrição dos lançamentos às categorias desejadas conforme a estrutura JSON fornecida.
-
-3. **Executar a Aplicação**
-
-  Execute o script principal para gerar o relatório PDF:
+  <img width="850" alt="Screenshot 2024-10-07 at 18 30 52" src="https://github.com/user-attachments/assets/c826462e-7f78-49ee-9d37-44c35c783f95">
   
-  ```bash
-  python main.py
-  ```
+  3. **Utilize o Editor de Categorias**
+
+  <img width="850" alt="Screenshot 2024-10-07 at 18 35 46" src="https://github.com/user-attachments/assets/b28b5760-90a8-4250-ac4c-6bccabc87916">
+
+  4. **Selecione o Banco correspondente**
+  
+  <img width="850" alt="Screenshot 2024-10-07 at 18 36 14" src="https://github.com/user-attachments/assets/c14b9a1c-eb35-414a-82a2-62849b261b52">
+
+  5. **Gere seu Relatório categorizado**
+
+  <img width="850" alt="Screenshot 2024-10-07 at 18 37 44" src="https://github.com/user-attachments/assets/7f0a1f87-3ba2-4d49-849a-7f8606d1bc88">
+  <img width="850" alt="Screenshot 2024-10-07 at 18 38 07" src="https://github.com/user-attachments/assets/5ff81f02-96d4-4c9c-a879-49e6d568caed">
+
 
 ### 📂 Adicionar Novos Bancos
 
