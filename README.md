@@ -90,6 +90,13 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   3. **Atualizar o `process.py`**:
     Importar o novo arquivo de modelo e adicionar uma nova checagem no `case` utilizando o código do banco.
 
+### 📂 Gerar Executável
+
+  Para cada plataforma(windows, linux e macOs) é necessário gerar o executável correspondente. 
+
+  ```bash
+  pyinstaller main.spec
+  ```
 
 ### 🗂 Estrutura do Projeto
 
@@ -113,9 +120,8 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   ├── view/
   │   ├── home.py
   │   └── category_editor.py
-  ├── reports/
-  │   └── <relatórios são gravados nessa pasta por default>
   ├── main.py
+  ├── main.spec
   ├── requirements.txt
   ├── .gitignore 
   ├── LICENSE       

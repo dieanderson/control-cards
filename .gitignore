@@ -1,5 +1,5 @@
 __pycache__/
-/files/*
-/reports/*
-/img/grafico.png
+/files
+/dist
+/build
 .DS_Store

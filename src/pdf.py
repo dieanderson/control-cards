@@ -1,4 +1,4 @@
-import locale
+import os, locale, tempfile
 from fpdf import FPDF
 from slugify import slugify
 from datetime import datetime
@@ -12,7 +12,9 @@ def generate_categorized_pdf(lancamentos_agrupados, resumo, banco_nome):
   
   banco_slug = slugify(banco_nome)
   banco_img = get_file_path('img', f'{banco_slug}.png')
-  nome_arquivo = get_file_path('reports', f'relatorio_{banco_slug}_{timestamp}.pdf')
+  temp_dir = tempfile.gettempdir()
+  pdf_filename = f'relatorio_{banco_slug}_{timestamp}.pdf'
+  pdf_path= os.path.join(temp_dir, pdf_filename)
   
   pdf = FPDF()
   pdf.set_auto_page_break(auto=True, margin=15)
@@ -87,10 +89,10 @@ def generate_categorized_pdf(lancamentos_agrupados, resumo, banco_nome):
   # Resumo ******************************************************
 
   # Grafico *****************************************************
-  gerar_grafico_pizza(resumo)
-  pdf.image(get_file_path('img', 'grafico.png'), x=120, y=y_pos_grafico_start, w=85)
+  img_path = gerar_grafico_pizza(resumo)
+  pdf.image(img_path, x=120, y=y_pos_grafico_start, w=85)
   # Grafico *****************************************************
   
-  pdf.output(nome_arquivo)
-  print(f'Relatório gerado: {nome_arquivo}')
-  return nome_arquivo
+  pdf.output(pdf_path)
+  print(f'Relatório gerado: {pdf_path}')
+  return pdf_path

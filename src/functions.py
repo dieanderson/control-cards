@@ -1,4 +1,4 @@
-import os, json, platform, subprocess, webbrowser
+import os, json, platform, subprocess, webbrowser, tempfile
 from pathlib import Path
 import matplotlib.pyplot as plt
 from tkinter import filedialog, messagebox, Entry
@@ -139,7 +139,10 @@ def gerar_grafico_pizza(resumo):
   # Ajusta o espaço entre o gráfico e a legenda
   plt.subplots_adjust(left=0.1, right=0.75)  
 
+  temp_dir = tempfile.gettempdir()
+  img_path= os.path.join(temp_dir, 'grafico.png')
   plt.axis('equal')  # Mantém o gráfico circular
   plt.tight_layout()
-  plt.savefig(get_file_path('img', 'grafico.png'), bbox_inches='tight')
+  plt.savefig(img_path, bbox_inches='tight')
   plt.close()
+  return img_path
