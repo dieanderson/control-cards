@@ -4,10 +4,22 @@ import matplotlib.pyplot as plt
 from tkinter import filedialog, messagebox, Entry
 from collections import defaultdict
 
+# Exibe Mensagem
+def show_message(type, message):
+  match type:
+    case 'error':
+      messagebox.showerror("Erro", message)
+    case 'info':
+      messagebox.showinfo("Atenção", message)
+    case 'warn':
+      messagebox.showwarning("Cuidado", message)
+
+# Carrega Arquivo JSON
 def load_json(file_path):
   with open(file_path, 'r', encoding='utf-8') as file:
     return json.load(file)
 
+# Salva Arquivo JSON
 def save_json(file_path, data):
   create = False
   if not file_path:
@@ -22,13 +34,14 @@ def save_json(file_path, data):
     try:
       with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
-      messagebox.showinfo("Sucesso", f"Categorias salvas em: {file_path}")
+      show_message("info", f"Categorias salvas em: {file_path}")
       return file_path if create == True else None
     except Exception as e:
-      messagebox.showerror("Erro", f"Erro ao salvar categorias: {e}")
+      show_message("error", f"Erro ao salvar categorias: {e}")
   else:
-    messagebox.showinfo("Atenção", "Salvamento cancelado pelo usuário")
+    show_message("info", "Salvamento cancelado pelo usuário")
 
+# Abre caixa de diálogo para seleção de arquivo
 def select_file(file_type, type_name, entry: Entry):
   file_path = filedialog.askopenfilename(filetypes=[(type_name, file_type)])
   if file_path:
@@ -81,7 +94,7 @@ def resumo_de_categorias(lancamentos):
   totais_por_categoria = {}
   total_geral = 0
 
-  # Soma os valores por categoria e calcula o total geral
+  ## Soma os valores por categoria e calcula o total geral
   for lancamento in lancamentos:
     categoria = lancamento['cat']
     valor = lancamento['valor']
@@ -91,7 +104,7 @@ def resumo_de_categorias(lancamentos):
     else:
       totais_por_categoria[categoria] = valor
 
-  # Adiciona o percentual correspondente
+  ## Adiciona o percentual correspondente
   totais_com_percentual = {}
   for categoria, total in totais_por_categoria.items():
     percentual = (total / total_geral) * 100
@@ -107,23 +120,23 @@ def gerar_grafico_pizza(resumo):
   categorias = list(resumo.keys())
   totais = [resumo[categoria]['total'] for categoria in categorias]
 
-  plt.figure(figsize=(9, 7))  # Aumenta o tamanho do gráfico
+  plt.figure(figsize=(9, 7))  ## Aumenta o tamanho do gráfico
   wedges, texts, autotexts = plt.pie(
     totais,
     autopct='%1.1f%%',
     startangle=90,
     colors=plt.cm.Paired.colors,
-    wedgeprops=dict(width=0.4),  # Faz a pizza ser um gráfico de anel
-    pctdistance=0.85  # Afasta os percentuais
+    wedgeprops=dict(width=0.4),  ## Faz a pizza ser um gráfico de anel
+    pctdistance=0.85  ## Afasta os percentuais
   )
 
-  # Formatação dos percentuais
+  ## Formatação dos percentuais
   for autotext in autotexts:
-    autotext.set_fontsize(12)  # Define tamanho 
-    autotext.set_fontweight('bold')  # Coloca em negrito
-    #autotext.set_color('white') # Define a cor
+    autotext.set_fontsize(12)  ## Define tamanho 
+    autotext.set_fontweight('bold')  ## Coloca em negrito
+    #autotext.set_color('white') ## Define a cor
 
-  # Adiciona legendas externas ao gráfico
+  ## Adiciona legendas externas ao gráfico
   plt.legend(
     wedges, 
     categorias, 
@@ -133,15 +146,15 @@ def gerar_grafico_pizza(resumo):
     fontsize=12
   )
 
-  # Ajusta o título da legenda
+  ## Ajusta o título da legenda
   plt.setp(plt.gca().get_legend().get_title(), fontsize=14, fontweight='bold')
 
-  # Ajusta o espaço entre o gráfico e a legenda
+  ## Ajusta o espaço entre o gráfico e a legenda
   plt.subplots_adjust(left=0.1, right=0.75)  
 
   temp_dir = tempfile.gettempdir()
   img_path= os.path.join(temp_dir, 'grafico.png')
-  plt.axis('equal')  # Mantém o gráfico circular
+  plt.axis('equal')  ## Mantém o gráfico circular
   plt.tight_layout()
   plt.savefig(img_path, bbox_inches='tight')
   plt.close()

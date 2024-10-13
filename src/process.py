@@ -1,8 +1,7 @@
 import os
-from tkinter import messagebox
 from data.banks import banks
 from .pdf import generate_categorized_pdf
-from .functions import agrupar_por_categoria, resumo_de_categorias, open_file, load_json
+from .functions import agrupar_por_categoria, resumo_de_categorias, open_file, load_json, show_message
 from .models.bradesco import gera_lancamentos_bradesco
 from .models.nubank import gera_lancamentos_nubank
 from .models.xp import gera_lancamentos_xp
@@ -13,7 +12,7 @@ def run_process(csv_path, bank_name, categories_path):
   
   try:
     lancamentos = []
-  
+    ## Gera os lançamentos de acordo com o banco selecionado
     match bank_code:
       case 237:
         lancamentos = gera_lancamentos_bradesco(csv_path, categories)
@@ -33,4 +32,4 @@ def run_process(csv_path, bank_name, categories_path):
       print(f"O arquivo {pdf_path} não foi encontrado.")
 
   except Exception as e:
-    messagebox.showerror("Erro", f"Ocorreu um erro: {str(e)}")
+    show_message("error", f"Ocorreu um erro: {str(e)}")

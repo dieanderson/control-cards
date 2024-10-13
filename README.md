@@ -1,5 +1,7 @@
 # Control-Cards
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Control-Cards é uma aplicação em Python que gera relatórios categorizados de faturas de cartões de crédito. Bastando apenas adicionar o arquivo `.csv` da fatura do cartão e configurar o agrupamento dos lançamentos com as categorias desejadas, a ferramenta gera um relatório em PDF contendo gráficos e um resumo detalhado dos seus gastos.
 
 ## 📋 Funcionalidades
@@ -90,7 +92,7 @@ Estas instruções fornecerão uma cópia do projeto em funcionamento na sua má
   3. **Atualizar o `process.py`**:
     Importar o novo arquivo de modelo e adicionar uma nova checagem no `case` utilizando o código do banco.
 
-### 📂 Gerar Executável
+### 💾 Gerar Executável
 
   Para cada plataforma(windows, linux e macOs) é necessário gerar o executável correspondente. 
 
