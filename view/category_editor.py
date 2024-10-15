@@ -5,6 +5,7 @@ from .add_category import show_add_category
 
 # Função para abrir o editor de categorias
 def open_category_editor(root, category_file_path, entry_categories):
+	# 
 	def display_categories_optionmenu():
 		menu = option_menu['menu']
 		menu.delete(0, 'end')
@@ -18,6 +19,7 @@ def open_category_editor(root, category_file_path, entry_categories):
 		selected_category.set(category)
 		display_descriptions(category)
 
+	# Exibe todas as descrições de uma categoria na tela
 	def display_descriptions(category):
     # Limpa o frame de descrições para exibir as novas entradas
 		for widget in frame_descriptions.winfo_children():
@@ -29,6 +31,8 @@ def open_category_editor(root, category_file_path, entry_categories):
     # Carrega as descrições existentes ou uma lista vazia
 		descriptions = categories.get(category, [])
 
+		last_entry = None  # Variável para armazenar a última entry
+
     # Exibe as descrições (no máximo 4 por linha)
 		for idx, desc in enumerate(descriptions):
 			row = idx // 4
@@ -39,13 +43,18 @@ def open_category_editor(root, category_file_path, entry_categories):
 			entry.grid(row=row, column=col, padx=5, pady=5, sticky='w')
 			entry.insert(0, desc)
 			entries_descriptions.append(entry)
+			last_entry = entry
 
 			# Botão de remover ao lado da entry
 			btn_remove_desc = tk.Button(frame_descriptions, text="-", fg="red",
 																	command=lambda e=entry: remove_description(e))
 			btn_remove_desc.grid(row=row, column=col + 1, padx=5, pady=5, sticky='w')
+		
+		if last_entry:
+			last_entry.focus_set()
 		pass
 
+	# Remove a categoria selecionada da tela 
 	def remove_category():
 		category = selected_category.get()
 		if not category:
@@ -63,6 +72,7 @@ def open_category_editor(root, category_file_path, entry_categories):
 				for widget in frame_descriptions.winfo_children():
 					widget.destroy()
 
+	# Adiciona uma nova descrição vazia para a categoria selecionada
 	def add_description():
     # Certifica-se de que há uma categoria selecionada
 		current_category = selected_category.get()
@@ -82,6 +92,7 @@ def open_category_editor(root, category_file_path, entry_categories):
     # Reexibe as descrições, incluindo a nova entrada vazia
 		display_descriptions(current_category)
 
+	# Remove a descrição recebida da categoria selecionada
 	def remove_description(entry):
 		category = selected_category.get()
 		if not category:
@@ -100,6 +111,7 @@ def open_category_editor(root, category_file_path, entry_categories):
 			entries_descriptions.remove(entry)
 			display_descriptions(category)
 
+	# Salva o arquivo de categorias
 	def save_all_categories():
 		nonlocal category_file_path
 		current_category = selected_category.get()
@@ -151,13 +163,13 @@ def open_category_editor(root, category_file_path, entry_categories):
 	frame_category.pack(fill='x', pady=(0, 10))
 
 	tk.Label(frame_category, text="Categorias:").pack(side='left')
-
 	selected_category = tk.StringVar()
 	option_menu = tk.OptionMenu(frame_category, selected_category, "")
 	option_menu.config(width=30)
 	option_menu.pack(side='left', padx=(5, 10))
 
-	btn_add_cat = tk.Button(frame_category, text="Adicionar Categoria", command=lambda: show_add_category(editor, categories, selected_category, display_categories_optionmenu, display_descriptions))
+	btn_add_cat = tk.Button(frame_category, text="Adicionar Categoria", 
+												 command=lambda: show_add_category(editor, categories, selected_category, display_categories_optionmenu, display_descriptions, add_description))
 	btn_add_cat.pack(side='left', padx=5)
 
 	btn_remove_cat = tk.Button(frame_category, text="Remover Categoria", command=remove_category)
