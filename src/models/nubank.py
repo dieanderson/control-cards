@@ -20,9 +20,14 @@ def gera_lancamentos_nubank(arquivo_csv, categorias):
         valor_str = linha[2]
 
         # Verificar se o valor não está vazio e tentar converter para float
+        # O Nubank passou a usar formato brasileiro: ponto de milhar e
+        # vírgula decimal (ex: "1.501,00"). Normaliza antes de converter.
         if valor_str.strip():
+          valor_normalizado = valor_str.strip()
+          if ',' in valor_normalizado:
+            valor_normalizado = valor_normalizado.replace('.', '').replace(',', '.')
           try:
-            valor = float(valor_str)
+            valor = float(valor_normalizado)
           except ValueError:
             continue
         else:
